@@ -9,6 +9,8 @@ getButton.addEventListener("click", e=>{
     
 });
 
+let divisas = ['ARS','USD','EUR'];
+
 function getExchangeRate(){
     const amount = document.querySelector(".amount input");  //busco el valor que ingresa el usuario para convertir
     
@@ -27,7 +29,7 @@ function getExchangeRate(){
 
     //TO DO: Consumir una API
     switch (currencyFrom) {
-        case 'ARS':
+        case divisas[0]:
             switch (currencyTo) {
                 case 'USD':
                     convertedAmountValue = amountValue / 225;
@@ -44,7 +46,7 @@ function getExchangeRate(){
             
             break;
     
-            case 'USD':
+            case divisas[1]:
             switch (currencyTo) {
                 case 'ARS':
                     convertedAmountValue = amountValue * 225;
@@ -60,7 +62,7 @@ function getExchangeRate(){
             }
             break;
 
-            case 'EUR':
+            case divisas[2]:
             switch (currencyTo) {
                 case 'ARS':
                     convertedAmountValue = amountValue * 245;
