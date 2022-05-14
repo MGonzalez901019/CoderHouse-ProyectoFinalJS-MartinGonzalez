@@ -1,6 +1,19 @@
+class Comprador {
+    constructor(nombre,divisa,cantidad){
+        this.nombre = nombre,
+        this.divisa = divisa,
+        this.cantidad = cantidad
+    }
+}
+
+
 const dropListFrom = document.querySelector(".drop-list-from select");
 const dropListTo = document.querySelector(".drop-list-to .currency-to select");
 getButton = document.getElementById("get-rate-button");
+
+
+
+//listener del click
 
 getButton.addEventListener("click", e=>{
 
@@ -12,6 +25,7 @@ getButton.addEventListener("click", e=>{
 function getExchangeRate(){
     const amount = document.querySelector(".amount input");  //busco el valor que ingresa el usuario para convertir
     
+
     let amountValue = amount.value;
     let convertedAmountValue = amountValue;
 
@@ -24,13 +38,14 @@ function getExchangeRate(){
     let currencyFrom = dropListFrom.value;
     let currencyTo = dropListTo.value;
 
+    const divisa = ['ARS','USD','EUR'];
 
-    //TO DO: Consumir una API
+    //TO DO: Consumir una API para romar los valores actualizados de las divisas y modular la funcion de getExchangeRate()
     switch (currencyFrom) {
-        case 'ARS':
+        case divisa[0]:
             switch (currencyTo) {
                 case 'USD':
-                    convertedAmountValue = amountValue / 225;
+                    convertedAmountValue = amountValue / 225;               //estos de momento son valores fijos desactualizados, la idea es que se actualicen cuando pueda consumir una api
                     
                     break;
                 case 'EUR':
@@ -44,7 +59,7 @@ function getExchangeRate(){
             
             break;
     
-            case 'USD':
+            case divisa[1]:
             switch (currencyTo) {
                 case 'ARS':
                     convertedAmountValue = amountValue * 225;
@@ -60,7 +75,7 @@ function getExchangeRate(){
             }
             break;
 
-            case 'EUR':
+            case divisa[2]:
             switch (currencyTo) {
                 case 'ARS':
                     convertedAmountValue = amountValue * 245;
@@ -88,16 +103,3 @@ function getExchangeRate(){
 
 
 
-// function myFunction()
-// {
-//     const addCurrencyBtn = document.querySelector (".btn btn-primary add-currencyBtn")
-//     addCurrencyBtn.addEventListener
-    
-// const currencies = [
-//     let
-// ]
-// if (selId.value=="USD")
-// {
-//     alert("dolar");
-// }
-// }
