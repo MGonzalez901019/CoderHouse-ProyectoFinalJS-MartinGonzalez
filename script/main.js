@@ -6,11 +6,12 @@ getButton.addEventListener("click", e=>{
 
     e.preventDefault();
     getExchangeRate();
-    //console.log("botonApretado");
+    
 });
 
 function getExchangeRate(){
     const amount = document.querySelector(".amount input");  //busco el valor que ingresa el usuario para convertir
+    
     let amountValue = amount.value;
     let convertedAmountValue = amountValue;
 
@@ -30,14 +31,14 @@ function getExchangeRate(){
             switch (currencyTo) {
                 case 'USD':
                     convertedAmountValue = amountValue / 225;
-                    alert("valor en USD: " +convertedAmountValue);
+                    
                     break;
                 case 'EUR':
                     convertedAmountValue = amountValue / 245;
-                    alert("valor en EUR: "+convertedAmountValue);
+                    
                     break;
                 case 'ARS':
-                    alert(convertedAmountValue);
+                    
                     break;
             }
             
@@ -47,14 +48,14 @@ function getExchangeRate(){
             switch (currencyTo) {
                 case 'ARS':
                     convertedAmountValue = amountValue * 225;
-                    alert("valor en ARS: " +convertedAmountValue);
+                    
                     break;
                 case 'EUR':
                     convertedAmountValue = amountValue * 0.9;
-                    alert("valor en EUR: "+convertedAmountValue);
+                    
                     break;
                 case 'USD':
-                    alert(convertedAmountValue);
+                    
                     break;
             }
             break;
@@ -63,14 +64,14 @@ function getExchangeRate(){
             switch (currencyTo) {
                 case 'ARS':
                     convertedAmountValue = amountValue * 245;
-                    alert("valor en ARS: " +convertedAmountValue);
+                    
                     break;
                 case 'USD':
                     convertedAmountValue = amountValue * 1.1;
-                    alert("valor en EUR: "+convertedAmountValue);
+                    
                     break;
                 case 'EUR':
-                    alert(convertedAmountValue);
+                    
                     break;
             }
             break;
@@ -79,8 +80,13 @@ function getExchangeRate(){
             break;
     }
 
+    //convertedAmountValue = Math.floor(convertedAmountValue);
+
+    document.getElementById('outputValue').innerHTML = convertedAmountValue.toFixed(2);
 
 }
+
+
 
 // function myFunction()
 // {

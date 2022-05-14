@@ -32,6 +32,15 @@ form
 }
 
 .amount{
+    margin-top: 10px;
+}
+
+.output{
     padding: 10px;
     margin-top: 10px;
+
+}
+
+#outputValue{
+    background-color: white;
 }
