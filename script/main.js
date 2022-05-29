@@ -5,7 +5,7 @@ const dropListFrom = document.querySelector(".drop-list-from select");
 const dropListTo = document.querySelector(".drop-list-to .currency-to select");
 getButton = document.getElementById("get-rate-button");
 
-
+document.title = "Currency Converter";
 
 
 //#region H1 DOM
