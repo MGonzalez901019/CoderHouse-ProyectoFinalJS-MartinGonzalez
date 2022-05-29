@@ -5,6 +5,18 @@ const dropListFrom = document.querySelector(".drop-list-from select");
 const dropListTo = document.querySelector(".drop-list-to .currency-to select");
 getButton = document.getElementById("get-rate-button");
 
+
+
+
+//#region H1 DOM
+const header1 = document.getElementById("header");
+header1.style.fontSize = "x-large";
+header1.style.color = "red";
+header1.style.backgroundColor = "rgb(32,43,34)";
+header1.innerText = "Conversor de Divisas";
+header1.style.fontWeight = "bold";
+//#endregion
+
 let nombre = "";
 
 //listener del click
@@ -12,8 +24,6 @@ let nombre = "";
 
 
      getButton.addEventListener("click", m=>{
-
-        
 
         m.preventDefault();
         getExchangeRate();
@@ -23,7 +33,7 @@ let nombre = "";
 
 
 
-
+//#region FUNCION CONVERSOR DE MONEDA
 function getExchangeRate(){
 
     const amount = document.querySelector(".amount input");  //busco el valor que ingresa el usuario para convertir
@@ -112,6 +122,7 @@ function getExchangeRate(){
    
 
 }
+//#endregion
 
 
 
