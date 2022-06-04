@@ -17,7 +17,14 @@ header1.innerText = "Conversor de Divisas";
 header1.style.fontWeight = "bold";
 //#endregion
 
+const outputValue = document.getElementById("outputValue");
+
+outputValue.style.backgroundColor = "white";
+outputValue.style.padding = "10px";
+
 let nombre = "";
+
+
 
 //listener del click
 
@@ -125,4 +132,10 @@ function getExchangeRate(){
 //#endregion
 
 
+const btnAlert = document.querySelector("#get-rate-button")
 
+btnAlert.addEventListener("click",() => {
+
+    Swal.fire('Dinero Convertido');
+
+})
