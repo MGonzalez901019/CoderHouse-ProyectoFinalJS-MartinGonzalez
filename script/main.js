@@ -12,12 +12,6 @@ document.title = "Conversor de monedas";
 for (let i = 0; i < dropList.length; i++) {
     for(let currency_code in country_list){
 
-<<<<<<< HEAD
-let divisas = ['ARS','USD','EUR'];
-
-function getExchangeRate(){
-    const amount = document.querySelector(".amount input");  //busco el valor que ingresa el usuario para convertir
-=======
         let selected = i == 0 ? currency_code == "USD" ? "selected" : "" : currency_code == "ARS" ? "selected" : "";
         
         let optionTag = `<option value="${currency_code}" ${selected}>${currency_code}</option>`;
@@ -55,71 +49,10 @@ outputValue.style.padding = "10px";
         getExchangeRate();
         
      } );
->>>>>>> develop
     
 
 
 
-<<<<<<< HEAD
-    let currencyFrom = dropListFrom.value;
-    let currencyTo = dropListTo.value;
-
-
-    //TO DO: Consumir una API
-    switch (currencyFrom) {
-        case divisas[0]:
-            switch (currencyTo) {
-                case 'USD':
-                    convertedAmountValue = amountValue / 225;
-                    
-                    break;
-                case 'EUR':
-                    convertedAmountValue = amountValue / 245;
-                    
-                    break;
-                case 'ARS':
-                    
-                    break;
-            }
-            
-            break;
-    
-            case divisas[1]:
-            switch (currencyTo) {
-                case 'ARS':
-                    convertedAmountValue = amountValue * 225;
-                    
-                    break;
-                case 'EUR':
-                    convertedAmountValue = amountValue * 0.9;
-                    
-                    break;
-                case 'USD':
-                    
-                    break;
-            }
-            break;
-
-            case divisas[2]:
-            switch (currencyTo) {
-                case 'ARS':
-                    convertedAmountValue = amountValue * 245;
-                    
-                    break;
-                case 'USD':
-                    convertedAmountValue = amountValue * 1.1;
-                    
-                    break;
-                case 'EUR':
-                    
-                    break;
-            }
-            break;
-
-        default:
-            break;
-    }
-=======
 //#region FUNCION CONVERSOR DE MONEDA
 function getExchangeRate(){
     const fromAmount = document.querySelector("form input");
@@ -129,7 +62,6 @@ function getExchangeRate(){
     
     fetch(url).then(response => response.json()).then(result =>{
         
->>>>>>> develop
 
      convertedAmountValue = fromAmount.value * result.conversion_rates[dropListTo.value];
 
