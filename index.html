@@ -19,18 +19,16 @@
                 <form>
                     <div class="mb-3">
                         <div class="amount">
-                            <form>
+
                             <label for="amount-to-convert">Cantidad a Convertir</label><br>
                             <input type="text">
-                        </form>
+
                         </div>
                         
                       <label for="currency-from" class="form-label">Divisa Desde</label><br>
                         <div class="drop-list-from">
                         <select>
-                            <option value="ARS">ARS</option>
-                            <option value="USD" selected>USD</option>
-                            <option value="EUR">EUR</option>
+
                         </select>
                         
                     </div>
@@ -39,23 +37,25 @@
                       <label for="currency-to" class="form-label">Divisa Hasta</label><br>
                       <div class="drop-list-to">
                       <div class="currency-to">
-                      <select name="select">
-                        <option value="ARS">ARS</option>
-                        <option value="USD" >USD</option>
-                        <option value="EUR">EUR</option>
+                      <select>
+
                     </select>
 
                 </div>
             </div>
                     </div>
-                    <button type="submit" id="get-rate-button" class="btn btn-primary add-currencyBtn">Convertir</button>
+                    
+                        <button type="submit" id="get-rate-button" class="btn btn-primary add-currencyBtn">Convertir</button>
+                    
+                    
 
-                  </form>
+                 
 
                   <div class="output">
-                      <form >
-                        <label for="outputValud">Cantidad Convertida:</label>
-                       <output type="text" > 
+                    
+                        <label for="outputValue">Cantidad Convertida:</label>
+
+                        <output type="text" > 
                            <p id="outputValue" ></p>
                       </form>
                     
@@ -75,6 +75,8 @@
     
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="script/country-code.js"> </script>
+    <script src="script/key.js"> </script>
     <script src="script/main.js"> </script>
 </body>
 </html>

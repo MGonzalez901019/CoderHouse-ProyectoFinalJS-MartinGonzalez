@@ -1,12 +1,25 @@
 
 
-
-const dropListFrom = document.querySelector(".drop-list-from select");
+const dropList = document.querySelectorAll("form select")
+const dropListFrom = document.querySelector(".drop-list-from select")
 const dropListTo = document.querySelector(".drop-list-to .currency-to select");
+
+
 getButton = document.getElementById("get-rate-button");
 
-document.title = "Currency Converter";
+document.title = "Conversor de monedas";
 
+for (let i = 0; i < dropList.length; i++) {
+    for(let currency_code in country_list){
+
+        let selected = i == 0 ? currency_code == "USD" ? "selected" : "" : currency_code == "ARS" ? "selected" : "";
+        
+        let optionTag = `<option value="${currency_code}" ${selected}>${currency_code}</option>`;
+        
+        dropList[i].insertAdjacentHTML("beforeend", optionTag);
+    }
+
+}
 
 //#region H1 DOM
 const header1 = document.getElementById("header");
@@ -17,7 +30,7 @@ header1.innerText = "Conversor de Divisas";
 header1.style.fontWeight = "bold";
 //#endregion
 
-const outputValue = document.getElementById("outputValue");
+const convertedAmount = document.getElementById("outputValue");
 
 outputValue.style.backgroundColor = "white";
 outputValue.style.padding = "10px";
@@ -42,92 +55,19 @@ let nombre = "";
 
 //#region FUNCION CONVERSOR DE MONEDA
 function getExchangeRate(){
-
-    const amount = document.querySelector(".amount input");  //busco el valor que ingresa el usuario para convertir
-    let amountValue = amount.value;
-        let convertedAmountValue = amountValue;
-
-
-        
+    const fromAmount = document.querySelector("form input");
     
-        if(amountValue == "" || amountValue == "0"){
-            amount.value = "1";
-            amountValue = 1;
     
-        }
+    let url = `https://v6.exchangerate-api.com/v6/${key}/latest/${dropListFrom.value}`;
     
-        let currencyFrom = dropListFrom.value;
-        let currencyTo = dropListTo.value;
-    
-        const divisa = ['ARS','USD','EUR'];
-    
-        //TO DO: Consumir una API para romar los valores actualizados de las divisas y modular la funcion de getExchangeRate()
-
-        switch (currencyFrom) {
-            case divisa[0]:
-                switch (currencyTo) {
-                    case 'USD':
-                        convertedAmountValue = amountValue / 225;               //estos de momento son valores fijos desactualizados, la idea es que se actualicen cuando pueda consumir una api
-                        
-                        break;
-                    case 'EUR':
-                        convertedAmountValue = amountValue / 245;
-                        
-                        break;
-                    case 'ARS':
-                        
-                        break;
-                }
-                
-                break;
-        
-                case divisa[1]:
-                switch (currencyTo) {
-                    case 'ARS':
-                        convertedAmountValue = amountValue * 225;
-                        
-                        break;
-                    case 'EUR':
-                        convertedAmountValue = amountValue * 0.9;
-                        
-                        break;
-                    case 'USD':
-                        
-                        break;
-                }
-                break;
-    
-                case divisa[2]:
-                switch (currencyTo) {
-                    case 'ARS':
-                        convertedAmountValue = amountValue * 245;
-                        
-                        break;
-                    case 'USD':
-                        convertedAmountValue = amountValue * 1.1;
-                        
-                        break;
-                    case 'EUR':
-                        
-                        break;
-                }
-                break;
-    
-            default:
-                break;
-            }
-            
-
-
-        document.getElementById('outputValue').innerHTML = convertedAmountValue.toFixed(2);
-    
-
-  
-
-
-
-   
-
+    fetch(url).then(response => response.json()).then(result =>{
+        console.log(result.conversion_rates);
+        //console.log(optionTag);
+       // console.log(dropListTo.value);
+    //console.log(amount.value);
+    }).catch(() =>{ 
+        console.log("error");
+    });
 }
 //#endregion
 
