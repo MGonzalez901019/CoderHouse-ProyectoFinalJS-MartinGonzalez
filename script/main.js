@@ -30,7 +30,7 @@ header1.innerText = "Conversor de Divisas";
 header1.style.fontWeight = "bold";
 //#endregion
 
-let convertedAmount = document.getElementById("outputValue");
+//let convertedAmount = document.getElementById("outputValue");
 
 outputValue.style.backgroundColor = "white";
 outputValue.style.padding = "10px";
@@ -46,7 +46,7 @@ outputValue.style.padding = "10px";
      getButton.addEventListener("click", m=>{
 
         m.preventDefault();
-       outputValue = getExchangeRate();
+        getExchangeRate();
         
      } );
     
@@ -56,23 +56,21 @@ outputValue.style.padding = "10px";
 //#region FUNCION CONVERSOR DE MONEDA
 function getExchangeRate(){
     const fromAmount = document.querySelector("form input");
-    
+    let convertedAmountValue = 0;
     
     let url = `https://v6.exchangerate-api.com/v6/${key}/latest/${dropListFrom.value}`;
     
     fetch(url).then(response => response.json()).then(result =>{
         
 
-     let convertedAmount = fromAmount.value * result.conversion_rates[dropListTo.value];
-       console.log(convertedAmount);
-        //console.log(optionTag);
-       // console.log(dropListTo.value);
-    //console.log(amount.value);
+     convertedAmountValue = fromAmount.value * result.conversion_rates[dropListTo.value];
+
+    document.getElementById('outputValue').innerHTML = convertedAmountValue.toFixed(2);
     }).catch(() =>{ 
         console.log("error");
     });
     
-    return convertedAmount;
+    
 }
 //#endregion
 
