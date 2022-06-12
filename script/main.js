@@ -30,12 +30,12 @@ header1.innerText = "Conversor de Divisas";
 header1.style.fontWeight = "bold";
 //#endregion
 
-const convertedAmount = document.getElementById("outputValue");
+let convertedAmount = document.getElementById("outputValue");
 
 outputValue.style.backgroundColor = "white";
 outputValue.style.padding = "10px";
 
-let nombre = "";
+
 
 
 
@@ -46,7 +46,7 @@ let nombre = "";
      getButton.addEventListener("click", m=>{
 
         m.preventDefault();
-        getExchangeRate();
+       outputValue = getExchangeRate();
         
      } );
     
@@ -61,13 +61,18 @@ function getExchangeRate(){
     let url = `https://v6.exchangerate-api.com/v6/${key}/latest/${dropListFrom.value}`;
     
     fetch(url).then(response => response.json()).then(result =>{
-        console.log(result.conversion_rates);
+        
+
+     let convertedAmount = fromAmount.value * result.conversion_rates[dropListTo.value];
+       console.log(convertedAmount);
         //console.log(optionTag);
        // console.log(dropListTo.value);
     //console.log(amount.value);
     }).catch(() =>{ 
         console.log("error");
     });
+    
+    return convertedAmount;
 }
 //#endregion
 
